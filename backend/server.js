@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const passport = require('passport');   
 
 const users = require('./routes/api/users');
@@ -12,11 +11,11 @@ var cors = require('cors')
 app.use(cors())
 
 app.use(
-    bodyParser.urlencoded({
+    express.urlencoded({
         extended: false
     }));
 
-app.use(bodyParser.json())
+app.use(express.json())
 
 mongoose.connect('mongodb+srv://educator-ai:' + 'vQk52MyZlw0zYUTW' + '@cluster0.hqk1y.mongodb.net/edcuatorDb?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
 .then(()=>{
