@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { PersistGate} from 'redux-persist/integration/react'
+
 import Dashboard from './component/Dashboard/dashboard.component';
 import Dashboard1 from './component/Dashboard/dashboard_1.component';
 import Exam from './component/exam.component';
@@ -11,12 +13,13 @@ import RegisterTeacher from './component/register-teacher';
 import Error from './component/error_general'
 import Result from './component/result.component';
 import { Provider } from 'react-redux';
-import store from './store'
+import StoreModule from './store'
 import SearchFacutly from './component/searchFacutly';
 function App() {  
   return (
     <>
-      <Provider store={store}>
+      <Provider store={StoreModule.store}>
+        <PersistGate loading={null} persistor={StoreModule.persistor}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>
           <Switch>
@@ -35,7 +38,8 @@ function App() {
 
 
         </div>
-        </BrowserRouter>
+          </BrowserRouter>
+          </PersistGate>
       </Provider>
     </>
   );

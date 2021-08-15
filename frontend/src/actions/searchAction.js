@@ -6,8 +6,6 @@ export const setPreferred = (data) => dispatch => {
     axios
         .post(`${backendURL}/test/users/search`, data)
         .then(res => {
-            console.log(res.data)
-            // const { teacherId } = res.data;
             dispatch(setTutor(res.data))
         })
         .catch(err => {
@@ -18,9 +16,6 @@ export const setPreferred = (data) => dispatch => {
         })
 }
 export const setMyTutor = (data) => dispatch => {
-    console.log(data)
-    // localStorage.setItem('myTutor', data.myTutor)
-    // localStorage.setItem('testId', JSON.stringify(data.testCreated))
     dispatch(SetMyTutor(data))
 }
 
